@@ -4,8 +4,9 @@ This repository contains the test \<canvas\> game, collected data, and experimen
   
 Submitted to ASE 2022.
 
-- The code for our test game can be found in `game/`.
-- Our collected data (screenshot, *\<canvas\>object representation* (COR) pairs) can be found in `data/`.
+- The code for our testbed (i.e., the version of the game with injectable bugs) can be found in `testbed/`
+- The code for the non-buggy version of our test \canvas game can be found in `game/`
+- Our collected data, i.e., the screenshot, *\<canvas\> object representation* (COR) pairs, can be found in `data/`
 - Our experiment analysis can be `analysis/`.
 - Our experiment results can be found in `analysis/results`.
 
