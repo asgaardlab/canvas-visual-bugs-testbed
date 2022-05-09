@@ -534,7 +534,6 @@ const caberCatch = new Game(
             upperText.visible = true;
             return;
           }
-          debugger
           counter = 0;
           waitingForNextLevel = true;
           shipState = SHIP_LEAVING;
