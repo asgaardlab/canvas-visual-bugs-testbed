@@ -1,4 +1,19 @@
 export class Game {
+    /**BUG INJECTION*/
+    INJECTED_BUGS = {
+        // State bug S1
+        "STATE": false,
+        // Rendering bugs R1 and R2
+        // also need to swap the viking_sheet_small.png to viking_sheet.png
+        // in the asset directory of the game, and update code in main.js (lines 230-231)
+        "RENDERING": [false, false],
+    }
+    // State bugs S2,3,4,5,6 injected by altering file in directory
+    // Rendering bugs R3,4,5,6 injected by altering file in directory
+    // Appearance all bugs injected by altering file in directory
+    // Layout all bugs injected by altering file in directory
+    /**********************/
+
     //callbacks
     addTextures;
     loadTextures;
@@ -41,8 +56,9 @@ export class Game {
         //PIXI setup
         this.app = new PIXI.Application(
           {
-              width: 1280 / this.devicePixelRatio,
-              height: 720 / this.devicePixelRatio,
+              width: 1280 / this.devicePixelRatio, //window.innerWidth / this.devicePixelRatio,
+              height: 720 / this.devicePixelRatio, //window.innerHeight / this.devicePixelRatio,
+              //backgroundColor: 0x000000, // set with CSS
               autoResize: false,
               resolution: this.devicePixelRatio,
               antialias: true,

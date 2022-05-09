@@ -153,6 +153,11 @@ const caberCatch = new Game(
   function() {
     this.loader
       .add('sheet', 'assets/viking_sheet_small.png')  
+      /**BUG INJECTION */ 
+      // FOR RENDERING BUGS R1 and R2
+      // replace "viking_sheet_small.png" in game assets with "viking_sheet.png" from bugs
+      //.add('sheet', 'assets/viking_sheet.png')
+      /**--------------- */ 
       .add('menu', 'assets/startscreen.jpg')
       .add('gui', 'assets/gui_new.png')
       .add('ship', 'assets/ship.png')
@@ -163,6 +168,17 @@ const caberCatch = new Game(
     resources.gui.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.LINEAR;
 
     let length = 190;
+
+    /**BUG INJECTION*/
+    if (this.INJECTED_BUGS.RENDERING[0] == true) {
+      resources.sheet.texture.baseTexture.scaleMode = undefined;
+      resources.gui.texture.baseTexture.scaleMode = undefined;
+    }
+    if (this.INJECTED_BUGS.RENDERING[0] == true || this.INJECTED_BUGS.RENDERING[1] == true) { 
+      length = 331.8;
+      SCALE = 190/331.8;
+    }
+    /**********************/
 
     for(let y = 0; y < 4; y++) {
       for(let x = 0; x < 5; x++) {
@@ -306,6 +322,11 @@ const caberCatch = new Game(
 
     this.gameScene.addChild(player);
 
+    /**BUG INJECTION*/
+    if (this.INJECTED_BUGS.STATE === true)
+      player.alpha = 0.01;
+    /**********************/
+
     ship = new PIXI.Sprite(resources.ship.texture);
     ship.scale.x = 1/this.devicePixelRatio;
     ship.scale.y = 1/this.devicePixelRatio;
@@ -443,6 +464,25 @@ const caberCatch = new Game(
     //update projectiles
     for(const projectile of projectiles) {
       projectile.update(scale, delta);
+    }
+
+    //draw colliders
+    if(this.showColliders) {
+      graphics.clear();
+      graphics.beginFill(0xff00, 0.3);
+      for (const projectile of projectiles) {
+        graphics.drawCircle(projectile.x, projectile.y, (projectile.currentFrame === PROJ_LOG) ? LOG_COLLIDER_RADIUS : PROJ_COLLIDER_RADIUS);
+      }
+      graphics.drawCircle(player.x, player.y, PLAYER_COLLIDER_RADIUS);
+      graphics.drawRect(0, 0, 350, this.app.screen.height);
+
+      graphics.endFill();
+
+      graphics.beginFill(0xff, 0.7);
+      graphics.drawRect(300, this.app.screen.height - (50/this.devicePixelRatio), this.app.screen.width - (300 + 150)/this.devicePixelRatio, 30);
+      graphics.endFill();
+    } else {
+      graphics.clear();
     }
 
     //check for and react to collisions
@@ -625,3 +665,7 @@ function updateProjectileVelocity() {
   let t = 2 * d / (-PROJ_VEL_Y + vf);
   PROJ_VEL_X = (-caberCatch.app.view.width + (400) - 0.5 * (Projectile.HORIZONTAL_GRAVITY) * t * t) / t;  //solve for vi
 }
+
+/**FOR DEBUGGING*******/
+window.caberCatch = caberCatch;
+/**********************/
