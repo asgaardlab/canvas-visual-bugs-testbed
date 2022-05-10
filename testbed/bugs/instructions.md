@@ -16,5 +16,5 @@
 
 ### Rendering bugs
 
-- R1 and R2 are both injected by placing `./bugs/rendering/_shared_R1_R2/viking_sheet.png` into the game assets directory and making a couple of changes in the source code. At line 9 of `core.js`, set `RENDERING[0] = true` for R1, or set `RENDERING[1] = true` for R2. Also, in `main.js`, replace `.add('sheet', 'assets/viking_sheet_small.png')` with `.add('sheet', 'assets/viking_sheet_small.png')` to complete the injection of bugs R1 or R2.
+- R1 and R2 are both injected by placing `./bugs/rendering/_shared_R1_R2/viking_sheet.png` into the game assets directory and making a couple of changes in the source code. At line 9 of `core.js`, set `RENDERING[0] = true` for R1, or set `RENDERING[1] = true` for R2. Also, in `main.js`, replace `.add('sheet', 'assets/viking_sheet_small.png')` with `.add('sheet', 'assets/viking_sheet.png')` to complete the injection of bugs R1 or R2.
 - R3, R4, R5, R6 are injected by replacing the original asset with the buggy asset in the game assets directory.
