@@ -50,11 +50,4 @@ def calc_ssim(obj_arr, asset_arr):
     """
     Structural similarity
     """
-    # in case we compare two images that are both the same single colour
-    # e.g. an object is covered entirely by overlapping objects
-    drange = asset_arr.max() - asset_arr.min()
-    if drange == 0:
-        drange = obj_arr.max() - obj_arr.min()
-    if drange == 0:
-        return 1.
-    return ssim(obj_arr, asset_arr, data_range=drange, channel_axis=2)
+    return ssim(obj_arr, asset_arr, channel_axis=2)
