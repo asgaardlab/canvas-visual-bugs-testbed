@@ -180,20 +180,20 @@ const caberCatch = new Game(
 
     const background_folder = 'assets/forest/';
     const background_files = [
-        '_00_sea.png',
-        '_01_ground.png',
-        '_02a_bunny.png',
-        '_02_trees and bushes.png',
-        '_03a_bunny.png',
-        '_03_distant_trees.png',
-        '_04_bushes.png',
-        '_05_hill1.png',
-        '_06_hill2.png',
-        '_07_huge_clouds.png',
-        '_08_clouds.png',
-        '_09_distant_clouds1.png',
-        '_10_distant_clouds.png',
-        '_11_background.png'
+        '00_sea.png',
+        '01_ground.png',
+        '02a_bunny.png',
+        '02_trees and bushes.png',
+        '03a_bunny.png',
+        '03_distant_trees.png',
+        '04_bushes.png',
+        '05_hill1.png',
+        '06_hill2.png',
+        '07_huge_clouds.png',
+        '08_clouds.png',
+        '09_distant_clouds1.png',
+        '10_distant_clouds.png',
+        '11_background.png'
     ].reverse();
     const dxs = [
         0,
