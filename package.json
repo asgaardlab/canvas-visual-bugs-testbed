@@ -1,0 +1,15 @@
+{
+  "name": "finlaymacklon",
+  "version": "1.0.0",
+  "main": "sass/style.scss",
+  "license": "MIT",
+  "scripts": {
+    "css-build": "sass sass/style.scss css/style.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
+  },
+  "devDependencies": {
+    "bulma": "^0.9.2",
+    "sass": "^1.54.0"
+  }
+}

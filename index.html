@@ -1,16 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Caber Catch</title>
-    <link rel="preload" href="fonts/norse.woff" as="font" type="font/woff">
-    <link rel="stylesheet" href="fonts/fonts.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="js/pixi.min.js"></script>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Automatically Detecting Visual Bugs in HTML5 &lt;canvas&gt; Games</title>
+  <link rel="icon" type="image/png" href="/img/favicon.ico"/>
+  <!-- https://bulma.io/documentation/customize/with-node-sass/  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-55EK5CGH91"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5JNWVVQKXC');
+  </script>
 </head>
 <body>
-    <script src="js/parallax.js" type="module"></script>
-    <script src="js/core.js" type="module"></script>
-    <script src="js/main.js" type="module"></script>
+  <div class="section columns">
+    <div class="column">
+        <div id="header" class="block container has-text-centered">
+          <h1 id="title" class="title is-size-3">
+            Automatically Detecting Visual Bugs in HTML5 &lt;canvas&gt; Games
+          </h1>
+          <h2 id="authors" class="is-size-5">
+            <span style="display:inline-block">
+              <a href="https://finlaymacklon.com/" target="_blank">Finlay Macklon</a> 
+              <sup>1</sup>
+              , 
+            </span>
+            <span style="display:inline-block">
+              <a href="https://taesiri.com" target="_blank">Mohammad Reza Taesiri</a> 
+              <sup>1</sup>
+              , 
+            </span>
+            <span style="display:inline-block">
+              <a href="https://markosviggiato.github.io/" target="_blank">Markos Viggiato</a> 
+              <sup>1</sup>
+              , 
+            </span>
+            <span style="display:inline-block">
+              <a href="http://asgaard.ece.ualberta.ca/" target="_blank">Stefan Antoszko</a> 
+              <sup>1</sup>
+              , 
+            </span>
+            <span style="display:inline-block">
+              <a href="https://www.prodigygame.com/" target="_blank">Natalia Romanova</a> 
+              <sup>2</sup>
+              , 
+            </span>
+            <span style="display:inline-block">
+              <a href="https://www.prodigygame.com/" target="_blank">Dale Paas</a> 
+              <sup>2</sup>
+              ,
+            </span>
+            <span style="display:inline-block">
+              <a href="http://asgaard.ece.ualberta.ca/" target="_blank">Cor-Paul Bezemer</a> 
+              <sup>1</sup>
+              ,
+            </span>
+          </h2>
+          <h3 id="affiliations" class="is-size-6">
+            <sup>1</sup>
+            University of Alberta, 
+            <sup>2</sup>
+            Prodigy Education
+          </h3>
+        </div>
+        <div id="contents" class="box container has-text-centered">
+          <div id="links" class="block">
+            <h1 class="subtitle is-5 pt-2">Links</h1>
+            <div class="block">
+              <div class="tabs is-centered is-toggle">
+                <ul>
+                  <li>
+                    <a href="http://asgaard.ece.ualberta.ca/papers/Conference/ASE_2022_Macklon_Automatically_Detecting_Visual_Bugs_In_HTML5_Canvas_Games.pdf" target="_blank">
+                      <span class="icon is-small">
+                        <svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"></path></svg>
+                      </span>
+                      <span>
+                        Paper
+                      </span>
+                    </a>
+                  </li>
+                  <!-- <li>
+                    <a href="" target="_blank">
+                      <span class="icon is-small">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>
+                        arXiv
+                      </span>
+                    </a>
+                  </li> -->
+                  <li>
+                    <a href="https://github.com/asgaardlab/canvas-visual-bugs-testbed" target="_blank">
+                      <span class="icon is-small">
+                        <i class="fa fa-code"></i>
+                      </span>
+                      <span>
+                        Code
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://zenodo.com/" target="_blank">
+                      <span class="icon is-small">
+                        <i class="fa fa-database"></i>
+                      </span>
+                      <span>
+                        Data
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/asgaardlab/canvas-visual-bugs-testbed/game" target="_blank">
+                      <span class="icon is-small">
+                        <i class="fa fa-gamepad"></i>
+                      </span>
+                      <span>
+                        Game
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div id="abstract" class="block">
+            <div class="block">
+              <h1 class="subtitle is-5 pt-2">Abstract</h1>
+              <div class="has-text-justified pl-3 pr-3">
+                <p>
+                  The HTML5 &lt;canvas&gt; is used to display high quality graphics in web applications such as web games (i.e., &lt;canvas&gt; games). 
+                  However, automatically testing &lt;canvas&gt; games is not possible with existing web testing techniques and tools, and manual testing is laborious. 
+                  Many widely used web testing tools rely on the Document Object Model (DOM) to drive web test automation, but the contents of the &lt;canvas&gt; are not represented in the DOM. 
+                  The main alternative approach, snapshot testing, involves comparing oracle snapshot images with test-time snapshot images using an image similarity metric to catch visual bugs, i.e., bugs in the graphics of the web application.
+                  However, creating and maintaining oracle snapshot images for &lt;canvas&gt; games is onerous, defeating the purpose of test automation.
+                  In this paper, we present a novel approach to automatically detect visual bugs in &lt;canvas&gt; games. 
+                  By leveraging an internal representation of objects on the &lt;canvas&gt;, we decompose snapshot images into a set of object images, each of which is compared with a respective oracle asset (e.g., a sprite) using four similarity metrics: percentage overlap, mean squared error, structural similarity, and embedding similarity. 
+                  We evaluate our approach by injecting 24 visual bugs into a custom &lt;canvas&gt; game, and find that our approach achieves an accuracy of 100%, compared to an accuracy of 44.6% with traditional snapshot testing.
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div id="testgame" class="block">
+            <div class="block">
+              <h1 class="subtitle is-5 pt-2">Test Game</h1>
+              <div>
+                <p>
+                  A live version of our test &lt;canvas&gt; game can be found at the following
+                  <a href="https://asgaardlab.github.io/canvas-visual-bugs-testbed/game" target="_blank">
+                    <span>link</span>
+                    <span class="icon is-small">
+                      <svg class="svg-inline--fa fa-external-link-alt fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="external-link-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"></path></svg>
+                    </span>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div id="bibtex" class="block">
+            <div class="block">
+              <h1 class="subtitle is-5 pt-2">BibTeX</h1>
+              <div class="has-text-justified is-size-6">
+              <pre><code>@misc{macklon2022automatically,
+    title={Automatically Detecting Visual Bugs in HTML5 &lt;canvas&gt; Games}, 
+    author={Finlay Macklon and Mohammad Reza Taesiri and Markos Viggiato and Stefan Antoszko and Natalia Romanova and Dale Paas and Cor-Paul Bezemer},
+    eprint={},
+    archivePrefix={arXiv}
+    year={2022}
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+      <div class="column is-narrow">
+        <!-- empty space -->
+      </div>
+  </div>
 </body>
 </html>
