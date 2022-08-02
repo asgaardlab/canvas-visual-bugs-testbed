@@ -50,10 +50,5 @@ def calc_ssim(obj_arr, asset_arr):
     """
     Structural similarity
     """
-    # skimage has a bug where if data_range==0 --> TrueDivide Error
-    if np.array_equal(asset_arr, obj_arr):
-        return 1.
-    drange = asset_arr.max() - asset_arr.min()
-    if drange == 0:
-        drange = obj_arr.max() - obj_arr.min()
-    return ssim(obj_arr, asset_arr, data_range=drange, channel_axis=2)
+    # 255 bit images
+    return ssim(obj_arr, asset_arr, data_range=255, channel_axis=2)
