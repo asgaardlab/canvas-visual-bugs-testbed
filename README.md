@@ -9,7 +9,8 @@ This repository contains the test \<canvas\> game, collected data, and experimen
 
   
 ### Our collected data
-- Our collected data, i.e., the screenshot, \<canvas\> object representation (COR) pairs, can be found in `./analysis/data/`  
+- Our collected data, i.e., the screenshot, \<canvas\> object representation (COR) pairs, can be found in `./analysis/data.tar.gz` 
+- Our collected data is also available on Zenodo at the following link: https://zenodo.org/record/6950640
   
   
 ### Experiments and analysis
