@@ -19,7 +19,3 @@ This repository contains the test \<canvas\> game, collected data, and experimen
 - Our experiment results can be found in `./analysis/results/`
   
 - Our implementation of our approach is available in `./analysis/sprite_similarity/`
-
-  
-### Other notes
-*We will put our code and data in a more final repo (e.g., Zenodo) for the final version of the paper.*
