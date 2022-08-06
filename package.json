@@ -4,7 +4,7 @@
   "main": "sass/style.scss",
   "license": "MIT",
   "scripts": {
-    "css-build": "sass sass/style.scss css/style.css",
+    "css-build": "sass sass/style.scss css/style.min.css --style compressed",
     "css-watch": "npm run css-build -- --watch",
     "start": "npm run css-watch"
   },
