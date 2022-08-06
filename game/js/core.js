@@ -70,6 +70,10 @@ export class Game {
             document.body.onmouseup = (e) => {this.mouseUp(e.x - this.app.view.offsetLeft, e.y - this.app.view.offsetTop)};
             document.body.onkeydown = (e) => {this.keyDown(e.key)};
             document.body.onkeyup = (e) => {this.keyUp(e.key)};
+            // for mobile compatibility
+            document.body.ontouchmove = (e) => {this.mouseMove(e.touches[0].clientX - this.app.view.offsetLeft, e.touches[0].clientY - this.app.view.offsetTop)};
+            document.body.ontouchstart = (e) => {this.mouseDown(e.touches[0].clientX - this.app.view.offsetLeft, e.touches[0].clientY - this.app.view.offsetTop)};
+            document.body.ontouchend = (e) => {this.mouseUp(e.changedTouches[0].clientX - this.app.view.offsetLeft, e.changedTouches[0].clientY - this.app.view.offsetTop)};
             //call user-defined update
             this.ticker.add((delta)=>{
                 this.update(delta, this.ticker.deltaMS);
@@ -111,6 +115,10 @@ export class Game {
         t.y = y;
 
         b.click = function() {
+            b.tint = 0xffffff;
+            func();
+        }
+        b.touchend = function() {
             b.tint = 0xffffff;
             func();
         }
