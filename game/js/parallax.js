@@ -24,9 +24,8 @@ export const addParallaxBackground = (app, asset_folder, asset_files, dxs, dys) 
         const background = new PIXI.Container;
         layers.reverse().map(l => background.addChildAt(l.sprite, 0));
         app.stage.addChildAt(background, 0);
-        // add background updates to ticker
-        app.ticker.add(() => {
-            layers.map(animateParallaxLayer);
+        app.ticker.add((scale) => {
+            layers.map(l => animateParallaxLayer(l, scale));
         });
         // add resize listener
         window.addEventListener('resize', () => {
@@ -34,9 +33,9 @@ export const addParallaxBackground = (app, asset_folder, asset_files, dxs, dys) 
         }); 
     });
 }
-const animateParallaxLayer = (layer) => {
-    layer.sprite.tilePosition.x = layer.sprite.tilePosition.x + layer.dx;
-    layer.sprite.tilePosition.y = layer.sprite.tilePosition.y + layer.dy;
+const animateParallaxLayer = (layer, scale) => {
+    layer.sprite.tilePosition.x = layer.sprite.tilePosition.x + (layer.dx * scale);
+    layer.sprite.tilePosition.y = layer.sprite.tilePosition.y + (layer.dy * scale);
 }
 const createParallaxLayers = (sprites, dxs, dys) => {
     const layers = sprites.map(s => new Object({"sprite": s}));

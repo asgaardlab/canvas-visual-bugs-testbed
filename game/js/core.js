@@ -45,7 +45,7 @@ export class Game {
               height: 720 / this.devicePixelRatio,
               autoResize: false,
               resolution: this.devicePixelRatio,
-              antialias: true,
+              antialias: false,
           }
         );
 
