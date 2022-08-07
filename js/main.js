@@ -1,37 +1,35 @@
 /**
- * Set up event listeners for interactive parts of website
+ * Set up event listeners for responsive iFrame
  */ 
-
 if (document.readyState === 'loading') {
     // wait for DOM content to load before running
-    document.addEventListener('DOMContentLoaded', add_project_listeners);
+    document.addEventListener('DOMContentLoaded', addResizeListeners);
 } else {
     // if DOM content loaded before script, just run 
-    add_project_listeners();
+    addResizeListeners();
 };
 
-/**
- * Control which project is displayed by listening to button clicks
- */
-function add_project_listeners(){
-    const class_active = 'is-active'
-    const proj_select_items = document.querySelector('#projects_select').querySelectorAll('li');
-    const proj_content_items = document.querySelector('#projects_contents').querySelectorAll('div');
+function addResizeListeners() {
+    const game = document.getElementById('game');
+    const gameBlock = document.getElementById('testgame');
+    game.addEventListener('load', resizeGame);
+    gameBlock.addEventListener('resize', resizeGame);
+    window.addEventListener('resize', resizeGame);
+    window.addEventListener('orientationchange', resizeGame)//() => { window.location.reload() });
+}
 
-    proj_select_items.forEach((menu_item) => {
-        menu_item.addEventListener('click', (event) => {
-            // make all tabs not active
-            proj_select_items.forEach((node) => {
-                node.classList.remove(class_active);
-            });
-            // hide all projects' contents
-            proj_content_items.forEach((node) => {
-                node.style.display = 'none';
-            });
-            // show selected project
-            document.querySelector(event.target.dataset.target).style.display = 'block';
-            // make selected project's menu tab active
-            menu_item.classList.add(class_active);
-        });
-    });
-};
+function resizeGame() {
+    const game = document.getElementById('game');
+    const gameBlock = document.getElementById('testgame');
+    const gameContainer = document.getElementById('gameContainer');
+    const boundingRect = gameBlock.getBoundingClientRect();
+    const scaleX = boundingRect.width / 1280;
+    const scaleY = boundingRect.height / 720;
+    const scale = Math.min(scaleX, scaleY);
+    game.style['transform'] = `scale(${scale})`;
+    game.style['transform-origin'] = 'top left';
+    gameContainer.style['width'] = `${1280 * scale}px`;
+    gameContainer.style['height'] = `${720 * scale}px`;
+    game.style['width'] = `${1280}px`;
+    game.style['height'] = `${720}px`;
+}

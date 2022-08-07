@@ -140,7 +140,6 @@ export class Game {
         if (text != "") {
             scene.addChild(t);
         } 
-            
 
         //return the button object
         return {'sprite': b, 'text': t};

@@ -18,10 +18,12 @@
     gtag('js', new Date());
     gtag('config', 'G-5JNWVVQKXC');
   </script>
+  <script src="./js/main.js"></script>
 </head>
 <body>
-  <div class="section columns">
-    <div class="column">
+  <div class="section">
+    <div class="columns">
+    <div class="column is-full">
         <div id="header" class="block container has-text-centered">
           <h1 id="title" class="title is-size-3">
             Automatically Detecting Visual Bugs in HTML5 &lt;canvas&gt; Games
@@ -115,7 +117,7 @@
                       </span>
                     </a>
                   </li>
-                  <li>
+                  <!-- <li>
                     <a href="https://asgaardlab.github.io/canvas-visual-bugs-testbed/game">
                       <span class="icon is-small">
                         <i class="fa fa-gamepad"></i>
@@ -124,7 +126,7 @@
                         Game
                       </span>
                     </a>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
             </div>
@@ -134,7 +136,7 @@
             <div class="block">
               <h1 class="subtitle is-5 pt-2">Abstract</h1>
               <div class="has-text-justified pl-3 pr-3">
-                <p>
+                <p class="is-size-6">
                   The HTML5 &lt;canvas&gt; is used to display high quality graphics in web applications such as web games (i.e., &lt;canvas&gt; games). 
                   However, automatically testing &lt;canvas&gt; games is not possible with existing web testing techniques and tools, and manual testing is laborious. 
                   Many widely used web testing tools rely on the Document Object Model (DOM) to drive web test automation, but the contents of the &lt;canvas&gt; are not represented in the DOM. 
@@ -149,9 +151,9 @@
           </div>
           <hr>
           <div id="testgame" class="block">
-            <div class="block">
+            <div class="block has-text-centered">
               <h1 class="subtitle is-5 pt-2">Test Game</h1>
-              <div>
+              <!-- <div>
                 <p>
                   A live version of our test &lt;canvas&gt; game can be found at the following
                   <a href="https://asgaardlab.github.io/canvas-visual-bugs-testbed/game">
@@ -161,14 +163,27 @@
                     </span>
                   </a>
                 </p>
-              </div>
+              </div> -->
+              If the iframe below is not loading properly for you, please visit this 
+                  <a href="https://asgaardlab.github.io/canvas-visual-bugs-testbed/game">link</a>.
+            </div>
+            <div id="gameContainer" style="overflow:hidden; position:relative; width:100%; height:720px">
+              <iframe src="http://192.168.1.66:5500/game" title="Live version of our test game" scrolling="no" id="game"
+                style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;">
+              </iframe>
+            </div>
+            <div>
+              <p class="is-size-6">
+                <br>
+                <i><u>How to play:</u> Drag the viking across the screen to catch logs. Click when the viking is on the left side to collect logs.</i>
+              </p>
             </div>
           </div>
           <hr>
           <div id="bibtex" class="block">
             <div class="block">
               <h1 class="subtitle is-5 pt-2">BibTeX</h1>
-              <div class="has-text-justified is-size-6">
+              <div class="has-text-justified is-size-6 is-size-7-mobile">
               <pre><code>@misc{macklon2022automatically,
     title={Automatically Detecting Visual Bugs in HTML5 &lt;canvas&gt; Games}, 
     author={Finlay Macklon and Mohammad Reza Taesiri and Markos Viggiato and Stefan Antoszko and Natalia Romanova and Dale Paas and Cor-Paul Bezemer},
@@ -184,6 +199,7 @@
       <div class="column is-narrow">
         <!-- empty space -->
       </div>
+    </div>
   </div>
 </body>
 </html>
