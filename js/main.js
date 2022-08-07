@@ -11,7 +11,9 @@ if (document.readyState === 'loading') {
 
 function addResizeListeners() {
     const game = document.getElementById('game');
+    const gameBlock = document.getElementById('testgame');
     game.addEventListener('load', resizeGame);
+    gameBlock.addEventListener('resize', resizeGame);
     window.addEventListener('resize', resizeGame);
     window.addEventListener('orientationchange', resizeGame)//() => { window.location.reload() });
 }
