@@ -233,7 +233,7 @@ const caberCatch = new Game(
         reset();
       }, this.menuScene);
     //save this one to
-    pauseButton = this.createButton(this.app.screen.width-(40/this.devicePixelRatio), 60/this.devicePixelRatio, (pauseW)/this.devicePixelRatio, (pauseH)/this.devicePixelRatio, '',
+    pauseButton = this.createButton(this.app.screen.width-(40/this.devicePixelRatio), 60/this.devicePixelRatio, (1.5*pauseW)/this.devicePixelRatio, (1.5*pauseH)/this.devicePixelRatio, '',
       new PIXI.Texture(this.loader.resources.gui.texture, new PIXI.Rectangle(pauseX, pauseY, pauseW, pauseH)), pause, this.gameScene);
 
     keepPlayingButton = this.createButton(this.app.screen.width/2 - (160/this.devicePixelRatio), this.app.screen.height/2, (buttonW)/this.devicePixelRatio, (buttonH)/this.devicePixelRatio, 'CONTINUE',
