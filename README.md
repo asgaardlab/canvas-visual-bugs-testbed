@@ -18,4 +18,4 @@ This repository contains the test &lt;canvas&gt; game, collected data, and exper
 - Our experiment analysis can be found in `./analysis/`
 - Our experiment results can be found in `./analysis/results/`
 - Our implementation of our visual testing approach is available in `./analysis/sprite_similarity/`
-- The latest version of our data collection framework for PixiJS applications can be found here: https://github.com/finlaymacklon/pixi-exposer
+- The latest version of our data collection framework for PixiJS applications can be found here: https://github.com/finlaymacklon/pixi-sampler
