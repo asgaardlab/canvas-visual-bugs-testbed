@@ -2,7 +2,7 @@
 import { firefox, webkit, chromium } from "playwright";
 
 // for canvas testing
-import * as pdebug from "./pixi-exposer/tools/pixiDebugger/src/api.js";
+import * as pdebug from "./pixi-sampler/tools/pixiDebugger/src/api.js";
 
 // options
 const SLOWMO = 0;

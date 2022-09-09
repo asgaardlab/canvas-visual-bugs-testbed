@@ -1,3 +1,3 @@
-[submodule "testbed/test/pixi-exposer"]
-	path = testbed/test/pixi-exposer
-	url = https://github.com/finlaymacklon/pixi-exposer.git
+[submodule "testbed/test/pixi-sampler"]
+	path = testbed/test/pixi-sampler
+	url = https://github.com/finlaymacklon/pixi-sampler.git
