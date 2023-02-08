@@ -36,19 +36,20 @@ def parse_pixi(path_pixi_json, path_pixi_csv, logger_name=None):
     logger.info(f"Completed parsing the PIXI scene graph, saved to path '{path_pixi_csv}'")
     
 # @walltimeit
-def load_asset(obj):
-    path_asset = Path("./assets/{}".format(Path(urlparse(obj['url']).path).name))
+def load_asset(path_assets, obj):
+    file_name = Path(urlparse(obj['url']).path).name
+    path_asset = path_assets / file_name
     asset_img = Image.open(path_asset)
     return asset_img
 
-def crawl_assets(df, logger_name=None):
+def crawl_assets(df, path_assets, logger_name=None):
     logger = logging.getLogger(logger_name)
     urls_to_crawl = df["url"].dropna().unique().tolist()
-    resources_got = [*Path("./assets").glob("*.png")]
+    resources_got = [*path_assets.glob("*.png")] # assumes all resources are PNG
     # get each asset
     logger.info("start crawling assets")
     for url in urls_to_crawl:
-        path_write = Path(f"./assets/{Path(urlparse(url).path).name}")
+        path_write = path_assets / f"{Path(urlparse(url).path).name}"
         # don't re-crawl assets
         if path_write in resources_got:
             logger.info("already have {}".format(url))
@@ -85,4 +86,3 @@ def create_figures(asset_oracles, obj_images, errors, path_results, ss_name):
     path_fig_err = path_results / f"{ss_name}_errors.png"
     plot_comparisons(asset_oracles, obj_images, errors, path_fig_comp)
     plot_errors(errors, path_fig_err)
-    print(1)

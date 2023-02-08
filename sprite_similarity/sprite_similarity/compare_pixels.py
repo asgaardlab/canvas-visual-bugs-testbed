@@ -50,7 +50,5 @@ def calc_ssim(obj_arr, asset_arr):
     """
     Structural similarity
     """
-    if np.array_equal(asset_arr, obj_arr):
-        return 1.
-    return ssim(obj_arr, asset_arr, channel_axis=2)
-    # return ssim(obj_arr, asset_arr, channel_axis=2)
+    # 255 bit images
+    return ssim(obj_arr, asset_arr, data_range=255, channel_axis=2)

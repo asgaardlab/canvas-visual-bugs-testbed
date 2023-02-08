@@ -168,7 +168,7 @@ def preprocess_layer(snapshot, assetImg, obj, assetMasks, bg_color, cw=True):
     return objectImg, assetImg, mask
 
 # @walltimeit
-def preprocess(snapshot, df, bg_color, cw=True, logger_name=None):
+def preprocess(snapshot, df, path_assets, bg_color, cw=True, logger_name=None):
     logger = logging.getLogger(logger_name)
     
     # grab just the visible objects on the <canvas>
@@ -193,7 +193,7 @@ def preprocess(snapshot, df, bg_color, cw=True, logger_name=None):
         }
         # load base asset
         if row['type']=='object':
-            asset_image = load_asset(row)
+            asset_image = load_asset(path_assets, row)
             # asset_image = Image.open(make_asset_path(row))
         else:
             asset_image = None

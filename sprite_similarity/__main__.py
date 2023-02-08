@@ -1,6 +1,5 @@
 import argparse
 import logging
-import sys
 
 from pathlib import Path
 
@@ -9,10 +8,18 @@ from sprite_similarity.io import load_snapshot, crawl_assets, save_results, crea
 from sprite_similarity.preprocess import preprocess
 from sprite_similarity.compare_pixels import get_mean_squared_errors
 
-def main(path_snapshot, path_results, bg_color, enable_figures, quiet):
+def main(path_snapshot, bg_color, path_out, enable_figures, quiet):
+    # define paths
+    path_results = path_out / "results"
+    path_logs = path_out / "log"
+    path_assets = path_out / "assets"
+    # make sure paths exist
+    path_results.mkdir(parents=True, exist_ok=True)
+    path_logs.mkdir(parents=True, exist_ok=True)
+    path_assets.mkdir(parents=True, exist_ok=True)
+
     # set up logging interface
     logger_name = path_snapshot.name
-    path_logs = Path("./log")
     logger = setup_logger(path_logs, logger_name=logger_name, quiet=quiet)
     
     # if not enable_logging:
@@ -24,10 +31,17 @@ def main(path_snapshot, path_results, bg_color, enable_figures, quiet):
     ss, df = load_snapshot(path_snapshot, logger_name=logger_name)
 
     # crawl urls of game textures used in scene
-    crawl_assets(df, logger_name=logger_name) # TODO should do this at same time as collecting snapshot
+    crawl_assets(df, path_assets, logger_name=logger_name) # TODO should do this at same time as collecting snapshot
     
     # preprocess 
-    asset_oracles, obj_images = preprocess(ss, df, bg_color, cw=False, logger_name=logger_name)
+    asset_oracles, obj_images = preprocess(
+        ss, 
+        df, 
+        path_assets, 
+        bg_color, 
+        cw=False, 
+        logger_name=logger_name
+    )
     
     # calculate the errors between generated oracles and rendered objects
     errors = get_mean_squared_errors(asset_oracles, obj_images)
@@ -49,8 +63,8 @@ if __name__ == "__main__":
                     description = 'Visually analyse data collected from a PIXI application',
                     epilog = "For more help, visit: https://github.com/asgaardlab/canvas-visual-bugs-testbed")
     parser.add_argument("path_snapshot", type=Path)
-    parser.add_argument("-o", "--path_results", type=Path, default=Path("./results"))
     parser.add_argument("-c", "--background_color", type=tuple, default=(0, 0, 0, 255))
+    parser.add_argument("-o", "--path_out", type=Path, default=Path("."))
     parser.add_argument("-f", "--enable_figures", action='store_false')
     parser.add_argument("-q", "--quiet", action='store_true')
     
@@ -59,9 +73,9 @@ if __name__ == "__main__":
     
     # run the script
     main(
-        args.path_snapshot, 
-        args.path_results, 
+        args.path_snapshot,  
         args.background_color,
+        args.path_out,
         args.enable_figures,
         args.quiet,
     )

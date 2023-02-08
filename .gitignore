@@ -5,10 +5,9 @@
 
 **/node_modules/
 
-**/snapshots/**/*.json
-**/snapshots/**/*.png
-**/snapshots/**/*.zip
+**/snapshots/
 **/log
+**/assets
 **/results
 
 **/dist/
