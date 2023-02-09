@@ -130,9 +130,9 @@ def applyMask(img, mask, bgc=(0,0,0,255)):
     return img
 
 # @walltimeit
-def preprocess_layer(snapshot, assetImg, obj, assetMasks, bg_color, cw=True):
+def preprocess_layer(screenshot, assetImg, obj, assetMasks, bg_color, cw=True):
     if assetImg is None:
-        textMask = makeTextMask(obj['bbox'], snapshot.size, bgc=bg_color)
+        textMask = makeTextMask(obj['bbox'], screenshot.size, bgc=bg_color)
         return None, None, textMask
     
     # Apply transformations to the asset
@@ -142,7 +142,7 @@ def preprocess_layer(snapshot, assetImg, obj, assetMasks, bg_color, cw=True):
     assetImg = scaleImage(assetImg, obj['bbox'], mode=obj['scaleMode'])
     
     # Paste asset on blank image with same size as the <canvas>
-    assetImg = pasteAsset(assetImg, obj['bbox'], snapshot.size, bgc=bg_color)
+    assetImg = pasteAsset(assetImg, obj['bbox'], screenshot.size, bgc=bg_color)
     
     # generate a mask using this asset to use for underlying objects
     mask = makeMask(assetImg, bgc=bg_color)
@@ -152,8 +152,8 @@ def preprocess_layer(snapshot, assetImg, obj, assetMasks, bg_color, cw=True):
     # apply masks from overlying objects to asset 
     assetImg = applyMasks(assetImg, assetMasks, is_bg=True, bgc=bg_color)
     
-    # apply background asset mask to object in snapshot
-    objectImg = applyMasks(snapshot.copy(), [mask], is_bg=False, bgc=bg_color)
+    # apply background asset mask to object in screenshot
+    objectImg = applyMasks(screenshot.copy(), [mask], is_bg=False, bgc=bg_color)
     # apply overlaying asset masks to object
     objectImg = applyMasks(objectImg, assetMasks, is_bg=True, bgc=bg_color)
     
@@ -168,7 +168,7 @@ def preprocess_layer(snapshot, assetImg, obj, assetMasks, bg_color, cw=True):
     return objectImg, assetImg, mask
 
 # @walltimeit
-def preprocess(snapshot, df, path_assets, bg_color, cw=True, logger_name=None):
+def preprocess(screenshot, df, path_assets, bg_color, cw=True, logger_name=None):
     logger = logging.getLogger(logger_name)
     
     # grab just the visible objects on the <canvas>
@@ -200,7 +200,7 @@ def preprocess(snapshot, df, path_assets, bg_color, cw=True, logger_name=None):
 
         # preprocess the asset and object
         try:
-            obj_image, oracle, mask = preprocess_layer(ss, asset_image, obj, asset_masks, bg_color, cw)
+            obj_image, oracle, mask = preprocess_layer(screenshot, asset_image, obj, asset_masks, bg_color, cw)
             if row['type']=='object':
                 obj_images.append(obj_image)
                 asset_oracles.append(oracle)

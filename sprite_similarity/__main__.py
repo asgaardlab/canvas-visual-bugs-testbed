@@ -31,7 +31,7 @@ def main(path_snapshot, bg_color, path_out, enable_figures, quiet):
     ss, df = load_snapshot(path_snapshot, logger_name=logger_name)
 
     # crawl urls of game textures used in scene
-    crawl_assets(df, path_assets, logger_name=logger_name) # TODO should do this at same time as collecting snapshot
+    crawl_assets(df, path_assets, logger_name=logger_name) #TODO should do this at same time as collecting snapshot
     
     # preprocess 
     asset_oracles, obj_images = preprocess(
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     parser.add_argument("path_snapshot", type=Path)
     parser.add_argument("-c", "--background_color", type=tuple, default=(0, 0, 0, 255))
     parser.add_argument("-o", "--path_out", type=Path, default=Path("."))
-    parser.add_argument("-f", "--enable_figures", action='store_false')
+    parser.add_argument("-f", "--enable_figures", action='store_false') #TODO doublecheck correct default 
     parser.add_argument("-q", "--quiet", action='store_true')
     
     # read the arguments

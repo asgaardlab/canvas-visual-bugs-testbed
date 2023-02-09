@@ -1,0 +1,3 @@
+[submodule "pixi-sampler"]
+	path = pixi-sampler
+	url = https://github.com/finlaymacklon/pixi-sampler
