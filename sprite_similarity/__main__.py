@@ -8,7 +8,7 @@ from sprite_similarity.io import load_snapshot, crawl_assets, save_results, crea
 from sprite_similarity.preprocess import preprocess
 from sprite_similarity.compare_pixels import get_mean_squared_errors
 
-def main(path_snapshot, bg_color, path_out, enable_figures, quiet):
+def main(path_snapshot, bg_color, base_url_assets, path_out, enable_figures, quiet):
     # define paths
     path_results = path_out / "results"
     path_logs = path_out / "log"
@@ -31,7 +31,7 @@ def main(path_snapshot, bg_color, path_out, enable_figures, quiet):
     ss, df = load_snapshot(path_snapshot, logger_name=logger_name)
 
     # crawl urls of game textures used in scene
-    crawl_assets(df, path_assets, logger_name=logger_name) #TODO should do this at same time as collecting snapshot
+    crawl_assets(df, base_url_assets, path_assets, logger_name=logger_name) #TODO should do this at same time as collecting snapshot
     
     # preprocess 
     asset_oracles, obj_images = preprocess(
@@ -64,6 +64,7 @@ if __name__ == "__main__":
                     epilog = "For more help, visit: https://github.com/asgaardlab/canvas-visual-bugs-testbed")
     parser.add_argument("path_snapshot", type=Path)
     parser.add_argument("-c", "--background_color", type=tuple, default=(0, 0, 0, 255))
+    parser.add_argument("-u", "--base_url_assets", type=str, default=None)
     parser.add_argument("-o", "--path_out", type=Path, default=Path("."))
     parser.add_argument("-f", "--enable_figures", action='store_false') #TODO doublecheck correct default 
     parser.add_argument("-q", "--quiet", action='store_true')
@@ -75,6 +76,7 @@ if __name__ == "__main__":
     main(
         args.path_snapshot,  
         args.background_color,
+        args.base_url_assets,
         args.path_out,
         args.enable_figures,
         args.quiet,

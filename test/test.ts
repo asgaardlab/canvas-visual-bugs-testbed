@@ -1,5 +1,5 @@
-import { chromium, firefox } from "playwright-core";
-import { PixiSamplerAPI } from "../pixi-sampler/src/api"
+import { chromium, firefox } from "playwright-core"
+import { PixiSamplerAPI } from "../pixi-sampler/src/PixiSamplerAPI"
 
 const GAME_URL = "https://asgaardlab.github.io/canvas-visual-bugs-testbed/game/";
 const SNAPSHOTS_PATH = `${__dirname}/snapshots`;
@@ -21,8 +21,14 @@ async function test(snapshot_name:string = "test") {
     // wait for game to load
     await page.waitForLoadState("networkidle");
     await page.waitForLoadState("domcontentloaded");
+    await page.waitForSelector("canvas");
     // once page has loaded, inject the script
     await sampler.startExposing();
+    // click the central button to start game
+    await page.click("canvas");
+    // wait for game to load
+    await page.waitForLoadState("networkidle");
+    // take snapshot
     await sampler.takeSnapshot(snapshot_name);
     // end the test
     await browser.close();

@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const playwright_core_1 = require("playwright-core");
-const api_1 = require("../pixi-sampler/src/api");
+const PixiSamplerAPI_1 = require("../pixi-sampler/src/PixiSamplerAPI");
 const GAME_URL = "https://asgaardlab.github.io/canvas-visual-bugs-testbed/game/";
 const SNAPSHOTS_PATH = `${__dirname}/snapshots`;
 (() => __awaiter(void 0, void 0, void 0, function* () {
@@ -24,14 +24,20 @@ function test(snapshot_name = "test") {
         const page = yield browser.newPage();
         // create exposer for current page
         // @ts-ignore This works after transpiling to JS
-        const sampler = new api_1.PixiSamplerAPI(page, SNAPSHOTS_PATH);
+        const sampler = new PixiSamplerAPI_1.PixiSamplerAPI(page, SNAPSHOTS_PATH);
         // open the game website
         yield page.goto(GAME_URL);
         // wait for game to load
         yield page.waitForLoadState("networkidle");
         yield page.waitForLoadState("domcontentloaded");
+        yield page.waitForSelector("canvas");
         // once page has loaded, inject the script
         yield sampler.startExposing();
+        // click the central button to start game
+        yield page.click("canvas");
+        // wait for game to load
+        yield page.waitForLoadState("networkidle");
+        // take snapshot
         yield sampler.takeSnapshot(snapshot_name);
         // end the test
         yield browser.close();

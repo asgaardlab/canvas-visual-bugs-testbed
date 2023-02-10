@@ -3,6 +3,6 @@
 cd sprite_similarity 
 pip install requirements.txt
 
-cd ../parse_pixi
-npm install
-tsc
+cd ../pixi-sampler
+npm install -D
+npm run build

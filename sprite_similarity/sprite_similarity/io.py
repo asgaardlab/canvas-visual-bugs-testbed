@@ -1,6 +1,6 @@
 import json
 import requests
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 import numpy as np
 import pandas as pd
 from pathlib import Path
@@ -42,13 +42,15 @@ def load_asset(path_assets, obj):
     asset_img = Image.open(path_asset)
     return asset_img
 
-def crawl_assets(df, path_assets, logger_name=None):
+def crawl_assets(df, base_url_assets, path_assets, logger_name=None):
     logger = logging.getLogger(logger_name)
     urls_to_crawl = df["url"].dropna().unique().tolist()
     resources_got = [*path_assets.glob("*.png")] # assumes all resources are PNG
     # get each asset
     logger.info("start crawling assets")
     for url in urls_to_crawl:
+        if base_url_assets and base_url_assets not in url:
+            url = urljoin(base_url_assets, url)
         path_write = path_assets / f"{Path(urlparse(url).path).name}"
         # don't re-crawl assets
         if path_write in resources_got:
