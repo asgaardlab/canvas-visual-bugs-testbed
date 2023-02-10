@@ -29,7 +29,7 @@ def load_snapshot(path_snapshot, logger_name):
 
 def parse_pixi(path_pixi_json, path_pixi_csv, logger_name=None):
     logger = logging.getLogger(logger_name)
-    node_code = f"cd parse_pixi && npm start ../{path_pixi_json} ../{path_pixi_csv}"
+    node_code = f"cd pixi-sampler && npm run parse ../{path_pixi_json} ../{path_pixi_csv}"
     logger.info(f"Began parsing the PIXI scene graph")
     process = subprocess.run(node_code, shell=True, check=True, capture_output=True, text=True)
     logger.info(process.stdout)
