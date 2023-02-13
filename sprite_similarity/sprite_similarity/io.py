@@ -57,7 +57,7 @@ def crawl_assets(df, base_url_assets, path_assets, logger_name=None):
             logger.info("already have {}".format(url))
             continue
         # 5 tries per asset
-        for i in range(5):
+        for _ in range(5):
             resp = requests.get(url)
             if resp.status_code == 200:
                 logger.info("successfully got {}".format(url))

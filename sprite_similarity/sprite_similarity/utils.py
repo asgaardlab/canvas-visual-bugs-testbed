@@ -3,10 +3,10 @@ import logging
 import sys
 import time
 from pathlib import Path
-from IPython.display import clear_output
-import ipyplot
 
-import matplotlib.pyplot as plt
+# from IPython.display import clear_output
+# import ipyplot
+# import matplotlib.pyplot as plt
 
 
 DEFAULT_LOGGER = "performance"
@@ -58,19 +58,19 @@ def walltimeit(func):
     
     return timed
 
-def watchit(func, names):
+# def watchit(func, names):
     
-    @wraps(func)
-    def monitored(*args, **kw):
-        imgs = func(*args, **kw)
+#     @wraps(func)
+#     def monitored(*args, **kw):
+#         imgs = func(*args, **kw)
         
-        if type(imgs) is tuple and imgs[0] is None:
-            pass
-        else:
-            clear_output(wait=True)
-            time.sleep(0.1)
-            ipyplot.plot_images(imgs, names)
-            time.sleep(1)
-        return imgs
+#         if type(imgs) is tuple and imgs[0] is None:
+#             pass
+#         else:
+#             clear_output(wait=True)
+#             time.sleep(0.1)
+#             ipyplot.plot_images(imgs, names)
+#             time.sleep(1)
+#         return imgs
     
-    return monitored
+#     return monitored
