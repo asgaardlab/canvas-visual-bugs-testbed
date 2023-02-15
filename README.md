@@ -1,5 +1,9 @@
 # Visual testing for PIXI applications
 
+This repository contains ...
+
+To access the replication package for the paper "Automatically Detecting Visual Bugs in HTML5 \<canvas> Games", please download the source from the [`p1` tag](https://github.com/asgaardlab/canvas-visual-bugs-testbed/releases/tag/p1), or view the code on the [`paper_1` branch](https://github.com/asgaardlab/canvas-visual-bugs-testbed/tree/paper_1).
+
 ## Prerequisites
 
 ### Python (v3.4+)

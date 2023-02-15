@@ -15,3 +15,5 @@
 **/*.egg-info/
 
 parse_pixi/src/*.js
+
+**/release/
