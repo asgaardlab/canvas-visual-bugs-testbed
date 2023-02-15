@@ -21,4 +21,5 @@ rsync -av --progress LICENSE ./release/pixi-visual-test/
 rsync -av --progress README.md ./release/pixi-visual-test/ 
 
 # create release zip file
-zip -r release/pixi-visual-test.zip release/pixi-visual-test
+cd release
+zip -r pixi-visual-test.zip pixi-visual-test
