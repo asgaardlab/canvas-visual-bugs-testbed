@@ -1,6 +1,5 @@
 # Visual testing for PIXI applications
 
-
 ## Prerequisites
 
 ### Python (v3.4+)
@@ -8,8 +7,8 @@
 - Run the command `python3 -m pip install ---upgrade pip` to ensure Python's package manager is installed
 
 ### Node.js
-- Install like so
-- ensure `npm` also installed
+- First install Node Version Manager (nvm) using instructions from https://github.com/nvm-sh/nvm
+- Then use nvm to install node (with npm)
 
 ## Installation
 ~~1) Clone this repo into the test directory of your project~~
@@ -26,20 +25,31 @@
 
 - Snapshot name needs to be known on both ends
 
-### Collecting snapshots
+### 1. Collecting snapshots
 - instrument your test code to capture snapshots, which are pairs of (screenshot, scene graph)
 
 e.g.
-```js
-import { PixiSamplerAPI } from 'MyApplication/test/canvas-visual-bugs-testbed/pixi-sampler/src/PixiSamplerAPI'
+```ts
+import { chromium } from 'playwright-core'
+import { PixiSamplerAPI } from 'pixi-visual-test/pixi-sampler/src/PixiSamplerAPI'
 
-sampler = new PixiSamplerAPI()
+(() => {
+     myTest();
+})()
 
-sampler.startExposing();
-
-sampler.takeSnapshot('test_0');
+async function myTest() {
+    const browser = await chromium.launch();
+    const page = browser.newPage();
+    sampler = new PixiSamplerAPI(page, 'test/snapshots')
+    // navigate to page, wait for canvas, and then inject the sampler into the webpage
+    await page.goto("https://localhost:8000")
+    await page.waitForSelector("canvas");
+    await sampler.startExposing();
+    // can now take snapshots of the Pixi application
+    await sampler.takeSnapshot('my_snapshot');
+}
 ```
 
-### Running visual tests
+### 2. Running visual tests
 
 Run `python3 sprite_similarity test/snapshots/<name_of_snapshot>`
