@@ -7,18 +7,17 @@ To access the replication package for the paper "Automatically Detecting Visual 
 ## Prerequisites
 
 ### Python (v3.4+)
-- Download and install from https://www.python.org/downloads/
-- Run the command `python3 -m pip install ---upgrade pip` to ensure Python's package manager is installed
+Download and install the latest version of Python from [this link](https://www.python.org/downloads/). After installing Python, ensure Python's package manager (Pip) is installed by running the command:
+
+ `python3 -m pip install ---upgrade pip` 
 
 ### Node.js
-- First install Node Version Manager (nvm) using instructions from https://github.com/nvm-sh/nvm
-- Then use nvm to install node (with npm)
+Using the instructions found at [this link](https://github.com/nvm-sh/nvm), first install Node Version Manager (nvm), and then use nvm to install Node and Node Package Manager (npm).
 
 ## Installation
-~~1) Clone this repo into the test directory of your project~~
-1) Download the latest release at the following link: 
-2) Unzip the folder and place it inside your `test` directory
-3) Open the folder and run `./install.sh`
+1) Download the latest release from the [releases page](https://github.com/asgaardlab/canvas-visual-bugs-testbed/releases/)
+2) Unzip the folder and place it inside your test directory
+3) Open the folder in your terminal and run the command `./install.sh`
 
 *Note: Initial installation may take a long time due to Python dependencies*
 

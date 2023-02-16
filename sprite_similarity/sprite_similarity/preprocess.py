@@ -3,7 +3,7 @@ from PIL import Image, ImageChops
 
 import logging
 
-from sprite_similarity.utils import walltimeit, watchit
+from sprite_similarity.utils import walltimeit #, watchit
 from sprite_similarity.io import load_asset
 
 # same as PixiJS; 0 -> Nearest, 1 -> Bilinear
