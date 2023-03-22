@@ -4,7 +4,7 @@
 **/.ipynb_checkpoints/
 
 **/*.js
-!src/PixiSampler.js
+!sampling/PixiSamplerClient.js
 
 **/node_modules/
 
