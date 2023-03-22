@@ -1,4 +1,4 @@
-import { PixiParser } from "../src/PixiParser";
+import { PixiParser } from "../pixi-sampler/src/PixiParser";
 
 function main(){
     const args = process.argv.slice(2);
