@@ -66,7 +66,7 @@ await sampler.takeSnapshot('<name_of_snapshot>');
 
 ### 2. Running visual tests
 
-Run `python3 sprite_similarity test/snapshots/<name_of_snapshot>`
+Run `python3 ./pixi-visual-test test/snapshots/<name_of_snapshot>`
 
 ## Examples
 
