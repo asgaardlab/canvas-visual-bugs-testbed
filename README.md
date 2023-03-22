@@ -9,8 +9,11 @@ Early in development and does not yet work for all PixiJS apps (see [Issues](htt
 - download the data from [Zenodo](https://zenodo.org/record/6950640)
 
 ## Features
-- Automatically detect visual bugs in [PixiJS](https://github.com/pixijs/pixijs) applications
+- Collect snapshots from a [PixiJS](https://github.com/pixijs/pixijs) applications application; snapshots contain a screenshot paired with a scene graph
+- Perform automatic visual comparisons between oracles (generated during the test) and the objects rendered to the \<canvas\>
 - Supports automated test scripts written with [Playwright](https://playwright.dev/) in [TypeScript](https://www.typescriptlang.org/)
+
+#### __Note:__ To detect visual bugs, must set baseline (acceptable) error scores and then perform regression testing. This functionality will be added to the framework in a future release.
 
 ## Prerequisites
 
