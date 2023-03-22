@@ -4,7 +4,6 @@ Automated visual testing framework for PixiJS applications.
 Early in development and does not yet work for all PixiJS apps (see [Issues](https://github.com/asgaardlab/canvas-visual-bugs-testbed/issues/)).
 
 **Note:** To access the replication package for our paper ["Automatically Detecting Visual Bugs in HTML5 \<canvas> Games"](https://asgaard.ece.ualberta.ca/papers/Conference/ASE_2022_Macklon_Automatically_Detecting_Visual_Bugs_In_HTML5_Canvas_Games.pdf):
-- view the code on the [`paper_1` branch](https://github.com/asgaardlab/canvas-visual-bugs-testbed/tree/paper_1)
 - download the source from the [`p1` tag](https://github.com/asgaardlab/canvas-visual-bugs-testbed/releases/tag/p1)
 - download the data from [Zenodo](https://zenodo.org/record/6950640)
 
