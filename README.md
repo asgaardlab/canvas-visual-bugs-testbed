@@ -8,7 +8,7 @@ Early in development and does not yet work for all PixiJS apps (see [Issues](htt
 - download the data from [Zenodo](https://zenodo.org/record/6950640)
 
 ## Features
-- Collect snapshots from a [PixiJS](https://github.com/pixijs/pixijs) applications application; snapshots contain a screenshot paired with a scene graph
+- Collect snapshots from a [PixiJS](https://github.com/pixijs/pixijs) application; snapshots contain a screenshot paired with a scene graph
 - Perform automatic visual comparisons between oracles (generated during the test) and the objects rendered to the \<canvas\>
 - Supports automated test scripts written with [Playwright](https://playwright.dev/) in [TypeScript](https://www.typescriptlang.org/)
 
@@ -45,13 +45,13 @@ Using the instructions found at [this link](https://github.com/nvm-sh/nvm), firs
 
 __Importing:__
 ```ts 
-import { PixiSamplerAPI } from 'pixi-visual-test/pixi-sampler/src/PixiSamplerAPI'
+import { PixiSamplerPlaywright } from 'pixi-visual-test/sampling/PixiSamplerPlaywright'
 ```
 
 __Instantiating:__ 
 ```ts
 /** @param {playwright.Page} page: Playwright browser page where PixiJS app is running */
-const sampler = new PixiSamplerAPI(page, 'test/snapshots')
+const sampler = new PixiSamplerPlaywright(page, 'test/snapshots')
 ```
 
 __Injecting:__ 
