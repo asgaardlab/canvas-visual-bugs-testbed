@@ -1,1 +1,0 @@
-Automated visual bug detection.
