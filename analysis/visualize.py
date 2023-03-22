@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 from PIL import Image, ImageDraw
 
 # from sprite_similarity.cosine_sim import display_transform
-from sprite_similarity.utils import walltimeit
+from analysis.utils import walltimeit
 
 
 def plot_comparisons(asset_oracles, obj_images, errors, path_figure):

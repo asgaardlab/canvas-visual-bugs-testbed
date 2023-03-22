@@ -1,5 +1,5 @@
 import { chromium, firefox } from "playwright-core"
-import { PixiSamplerAPI } from "../pixi-sampler/src/PixiSamplerAPI"
+import { PixiSamplerPlaywright } from "../sampling/PixiSamplerPlaywright"
 
 const GAME_URL = "https://asgaardlab.github.io/canvas-visual-bugs-testbed/game/";
 const SNAPSHOTS_PATH = `${__dirname}/snapshots`;
@@ -15,7 +15,7 @@ async function test(snapshot_name:string = "test") {
     const page = await browser.newPage();
     // create exposer for current page
     // @ts-ignore This works after transpiling to JS
-    const sampler = new PixiSamplerAPI(page, SNAPSHOTS_PATH);
+    const sampler = new PixiSamplerPlaywright(page, SNAPSHOTS_PATH);
     // open the game website
     await page.goto(GAME_URL);
     // wait for game to load

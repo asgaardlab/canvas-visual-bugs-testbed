@@ -10,8 +10,8 @@ import logging
 import subprocess
 import time
 
-from sprite_similarity.utils import walltimeit
-from sprite_similarity.visualize import plot_comparisons, plot_errors
+from analysis.utils import walltimeit
+from analysis.visualize import plot_comparisons, plot_errors
 
 # @walltimeit
 def load_snapshot(path_snapshot, logger_name):

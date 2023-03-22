@@ -1,6 +1,6 @@
 import numpy as np
 
-from sprite_similarity.utils import walltimeit
+from analysis.utils import walltimeit
 from skimage.metrics import structural_similarity as ssim
 from skimage.metrics import mean_squared_error
 

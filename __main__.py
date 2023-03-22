@@ -3,10 +3,10 @@ import logging
 
 from pathlib import Path
 
-from sprite_similarity.utils import setup_logger
-from sprite_similarity.io import load_snapshot, crawl_assets, save_results, create_figures
-from sprite_similarity.preprocess import preprocess
-from sprite_similarity.compare_pixels import get_mean_squared_errors
+from analysis.utils import setup_logger
+from analysis.io import load_snapshot, crawl_assets, save_results, create_figures
+from analysis.preprocess import preprocess
+from analysis.compare_pixels import get_mean_squared_errors
 
 def main(path_snapshot, bg_color, base_url_assets, path_out, enable_figures, quiet):
     # define paths

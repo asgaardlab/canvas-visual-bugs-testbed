@@ -8,7 +8,7 @@
         "allowJs": false,
         "baseUrl": "./",
         "rootDirs": [
-            "pixi-sampler",
+            "sampling",
             "test",
             "node_modules"
         ],
