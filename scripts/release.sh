@@ -1,24 +1,28 @@
 #!/bin/bash
 
-cd ..
-
+rm -r release
 mkdir release
 mkdir release/pixi-visual-test
 
-rsync -av --progress ./sprite_similarity ./release/pixi-visual-test/ \
+rsync -av ./analysis ./release/pixi-visual-test/ \
     --exclude *.pyc \
     --exclude __pycache__
 
-rsync -av -vvv --progress ./pixi-sampler ./release/pixi-visual-test/ \
-    --exclude node_modules \
-    --exclude .git \
+rsync -av ./sampling ./release/pixi-visual-test/ \
     --exclude *.js \
-    --exclude *.package-lock.json
 
-rsync -av --progress ./pixi-sampler/src/PixiSampler.js ./release/pixi-visual-test/pixi-sampler/src/
+rsync -av ./sampling/PixiSamplerClient.js ./release/pixi-visual-test/sampling/
 
-rsync -av --progress LICENSE ./release/pixi-visual-test/
-rsync -av --progress README.md ./release/pixi-visual-test/ 
+rsync -av ./scripts/parse.ts ./release/pixi-visual-test/scripts/
+
+rsync -av .gitignore ./release/pixi-visual-test/
+rsync -av LICENSE ./release/pixi-visual-test/
+rsync -av README.md ./release/pixi-visual-test/ 
+rsync -av package.json ./release/pixi-visual-test/ 
+rsync -av tsconfig.json ./release/pixi-visual-test/ 
+rsync -av requirements.txt ./release/pixi-visual-test/ 
+rsync -av __init__.py ./release/pixi-visual-test/ 
+rsync -av __main__.py ./release/pixi-visual-test/ 
 
 # create release zip file
 cd release

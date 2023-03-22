@@ -9,7 +9,7 @@
     "test-sampling": "node test/test.js",
     "test-analysis": "python3 . test/snapshots/test_0 -o test -u https://asgaardlab.github.io/canvas-visual-bugs-testbed/game/",
     "parse": "node scripts/parse.js $*",
-    "release": "cd scripts && ./release.sh"
+    "release": "./scripts/release.sh"
   },
   "author": "Finlay Macklon",
   "dependencies": {
