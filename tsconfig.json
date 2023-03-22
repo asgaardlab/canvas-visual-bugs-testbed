@@ -5,12 +5,16 @@
         "strict": true,
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
-        "baseUrl": ".",
+        "allowJs": false,
+        "baseUrl": "./",
+        // "outDir": "./dist",
         "rootDirs": [
-            "/opt/local/lib/node_modules"
+            "pixi-sampler",
+            "test",
+            "node_modules"
         ],
-        // "types": [
-        //     "node"
-        // ]
+        "types": [
+            "node"
+        ]
     }    
 }

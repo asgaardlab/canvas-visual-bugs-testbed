@@ -1,5 +1,3 @@
-# ipyplot==1.1.1
-# ipython==8.9.0
 matplotlib==3.5.1
 numpy==1.23.3
 pandas==1.3.4

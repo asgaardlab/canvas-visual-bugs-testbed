@@ -19,15 +19,16 @@ async function test(snapshot_name:string = "test") {
     // open the game website
     await page.goto(GAME_URL);
     // wait for game to load
-    await page.waitForLoadState("networkidle");
-    await page.waitForLoadState("domcontentloaded");
+    await page.waitForLoadState("load");
     await page.waitForSelector("canvas");
-    // once page has loaded, inject the script
+    await page.waitForTimeout(1000); // 1 second
+    // once game has loaded, inject the script
     await sampler.startExposing();
     // click the central button to start game
     await page.click("canvas");
-    // wait for game to load
+    // wait for game to start up
     await page.waitForLoadState("networkidle");
+    await page.waitForTimeout(1000); // 1 second
     // take snapshot
     await sampler.takeSnapshot(snapshot_name);
     // end the test

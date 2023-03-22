@@ -1,0 +1,25 @@
+{
+  "name": "pixi-sampler",
+  "version": "0.2.0",
+  "description": "Enables sampling of the scene graph of a PixiJS application while taking a screenshot.",
+  "scripts": {
+    "postinstall": "cd sprite_similarity && pip install -r requirements.txt",
+    "build": "tsc",
+    "test": "npm i -D && npm run build && npm run test-sampling && npm run test-analysis",
+    "test-sampling": "node test/test.js",
+    "test-analysis": "python3 sprite_similarity test/snapshots/test_0 -o test -u https://asgaardlab.github.io/canvas-visual-bugs-testbed/game/",
+    "parse": "node pixi-sampler/scripts/parse.js $*",
+    "release": "cd scripts && ./release.sh"
+  },
+  "author": "Finlay Macklon",
+  "dependencies": {
+    "csv-writer": "^1.6.0",
+    "flatted": "^3.2.6",
+    "fs-extra-promise": "^1.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.22.1",
+    "@types/fs-extra-promise": "^1.0.10",
+    "@types/node": "^17.0.45"
+  }
+}

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ..
+
 mkdir release
 mkdir release/pixi-visual-test
 
@@ -15,8 +17,6 @@ rsync -av -vvv --progress ./pixi-sampler ./release/pixi-visual-test/ \
 
 rsync -av --progress ./pixi-sampler/src/PixiSampler.js ./release/pixi-visual-test/pixi-sampler/src/
 
-rsync -av --progress .gitignore ./release/pixi-visual-test/ 
-rsync -av --progress install.sh ./release/pixi-visual-test/
 rsync -av --progress LICENSE ./release/pixi-visual-test/
 rsync -av --progress README.md ./release/pixi-visual-test/ 
 

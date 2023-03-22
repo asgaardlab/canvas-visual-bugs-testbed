@@ -1,8 +1,16 @@
 # Visual testing for PIXI applications
 
-This repository contains ...
+Automated visual testing framework for PixiJS applications.
+Early in development and does not yet work for all PixiJS apps (see [Issues](issues/)).
 
-To access the replication package for the paper "Automatically Detecting Visual Bugs in HTML5 \<canvas> Games", please download the source from the [`p1` tag](https://github.com/asgaardlab/canvas-visual-bugs-testbed/releases/tag/p1), or view the code on the [`paper_1` branch](https://github.com/asgaardlab/canvas-visual-bugs-testbed/tree/paper_1).
+**Note:** To access the replication package for our paper ["Automatically Detecting Visual Bugs in HTML5 \<canvas> Games"](https://asgaard.ece.ualberta.ca/papers/Conference/ASE_2022_Macklon_Automatically_Detecting_Visual_Bugs_In_HTML5_Canvas_Games.pdf):
+- view the code on the [`paper_1` branch](https://github.com/asgaardlab/canvas-visual-bugs-testbed/tree/paper_1)
+- download the source from the [`p1` tag](https://github.com/asgaardlab/canvas-visual-bugs-testbed/releases/tag/p1)
+- download the data from [Zenodo](https://zenodo.org/record/6950640)
+
+## Features
+- Automatically detect visual bugs in [PixiJS](https://github.com/pixijs/pixijs) applications
+- Supports automated test scripts written with [Playwright](https://playwright.dev/) in [TypeScript](https://www.typescriptlang.org/)
 
 ## Prerequisites
 
@@ -30,29 +38,36 @@ Using the instructions found at [this link](https://github.com/nvm-sh/nvm), firs
 
 ### 1. Collecting snapshots
 - instrument your test code to capture snapshots, which are pairs of (screenshot, scene graph)
+- sampling API requires reference to Playwright browser `Page` instance
+- sampling API requires call to inject into the `Page` instance before samples can be taken
 
-e.g.
-```ts
-import { chromium } from 'playwright-core'
+__Importing:__
+```ts 
 import { PixiSamplerAPI } from 'pixi-visual-test/pixi-sampler/src/PixiSamplerAPI'
+```
 
-(() => {
-     myTest();
-})()
+__Instantiating:__ 
+```ts
+/** @param {playwright.Page} page: Playwright browser page where PixiJS app is running*/
+const sampler = new PixiSamplerAPI(page, 'test/snapshots')
+```
 
-async function myTest() {
-    const browser = await chromium.launch();
-    const page = browser.newPage();
-    sampler = new PixiSamplerAPI(page, 'test/snapshots')
-    // navigate to page, wait for canvas, and then inject the sampler into the webpage
-    await page.goto("https://localhost:8000")
-    await page.waitForSelector("canvas");
-    await sampler.startExposing();
-    // can now take snapshots of the Pixi application
-    await sampler.takeSnapshot('my_snapshot');
-}
+__Injecting:__ 
+```ts
+await sampler.startExposing();
+```
+
+__Sampling:__ 
+```ts
+await sampler.takeSnapshot('<name_of_snapshot>');
 ```
 
 ### 2. Running visual tests
 
 Run `python3 sprite_similarity test/snapshots/<name_of_snapshot>`
+
+## Examples
+
+See [`test/`](test/) directory for a bare minimum example test script made for our toy example PixiJS game.
+
+To run the example, enter the command `npm run test` from the root directory of this repository.

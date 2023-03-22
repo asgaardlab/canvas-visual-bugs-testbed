@@ -3,6 +3,9 @@
 **/__pycache__/
 **/.ipynb_checkpoints/
 
+**/*.js
+!src/PixiSampler.js
+
 **/node_modules/
 
 **/snapshots/
@@ -14,6 +17,7 @@
 **/build/
 **/*.egg-info/
 
-parse_pixi/src/*.js
+test/*
+!test/test.ts
 
-**/release/
+release/
