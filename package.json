@@ -1,7 +1,7 @@
 {
-  "name": "pixi-sampler",
-  "version": "0.2.0",
-  "description": "Enables sampling of the scene graph of a PixiJS application while taking a screenshot.",
+  "name": "pixi-visual-test",
+  "version": "0.1",
+  "description": "Automated visual testing framework for PixiJS applications.",
   "scripts": {
     "postinstall": "cd sprite_similarity && pip install -r requirements.txt",
     "build": "tsc",

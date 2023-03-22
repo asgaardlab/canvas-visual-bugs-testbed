@@ -7,7 +7,6 @@
         "forceConsistentCasingInFileNames": true,
         "allowJs": false,
         "baseUrl": "./",
-        // "outDir": "./dist",
         "rootDirs": [
             "pixi-sampler",
             "test",

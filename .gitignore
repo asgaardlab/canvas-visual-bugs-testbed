@@ -8,11 +8,6 @@
 
 **/node_modules/
 
-**/snapshots/
-**/log
-**/assets
-**/results
-
 **/dist/
 **/build/
 **/*.egg-info/

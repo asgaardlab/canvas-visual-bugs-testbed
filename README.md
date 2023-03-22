@@ -1,7 +1,7 @@
 # Visual testing for PIXI applications
 
 Automated visual testing framework for PixiJS applications.
-Early in development and does not yet work for all PixiJS apps (see [Issues](issues/)).
+Early in development and does not yet work for all PixiJS apps (see [Issues](https://github.com/asgaardlab/canvas-visual-bugs-testbed/issues/)).
 
 **Note:** To access the replication package for our paper ["Automatically Detecting Visual Bugs in HTML5 \<canvas> Games"](https://asgaard.ece.ualberta.ca/papers/Conference/ASE_2022_Macklon_Automatically_Detecting_Visual_Bugs_In_HTML5_Canvas_Games.pdf):
 - view the code on the [`paper_1` branch](https://github.com/asgaardlab/canvas-visual-bugs-testbed/tree/paper_1)
@@ -48,7 +48,7 @@ import { PixiSamplerAPI } from 'pixi-visual-test/pixi-sampler/src/PixiSamplerAPI
 
 __Instantiating:__ 
 ```ts
-/** @param {playwright.Page} page: Playwright browser page where PixiJS app is running*/
+/** @param {playwright.Page} page: Playwright browser page where PixiJS app is running */
 const sampler = new PixiSamplerAPI(page, 'test/snapshots')
 ```
 
