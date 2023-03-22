@@ -1,6 +1,6 @@
 {
   "name": "pixi-visual-test",
-  "version": "0.1",
+  "version": "0.1.1",
   "description": "Automated visual testing framework for PixiJS applications.",
   "scripts": {
     "postinstall": "npm run build && pip install -r requirements.txt",
