@@ -1,4 +1,4 @@
-# Visual testing for PIXI applications
+# Visual testing for PixiJS applications
 
 Automated visual testing framework for PixiJS applications.
 Early in development and does not yet work for all PixiJS apps (see [Issues](https://github.com/asgaardlab/canvas-visual-bugs-testbed/issues/)).
@@ -25,7 +25,7 @@ Using the instructions found at [this link](https://github.com/nvm-sh/nvm), firs
 ## Installation
 1) Download the latest release from the [releases page](https://github.com/asgaardlab/canvas-visual-bugs-testbed/releases/)
 2) Unzip the folder and place it inside your test directory
-3) Open the folder in your terminal and run the command `./install.sh`
+3) Open the folder in your terminal and run the command `npm install -D`
 
 *Note: Initial installation may take a long time due to Python dependencies*
 
